@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太极图</title>
+    <style>
+        body {
+            background-color: #eee;
+            /* 为了图片显示得更准确。
+            如果不加背景，将无法看见白的那一半；
+            如果给整个圆加边框，边框将占据部分像素，导致阴阳鱼显示不够圆滑 */
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        @keyframes x {
+
+            /* 动画从0度旋转到360度 */
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #bagua {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            animation: x 25s linear infinite;
+            /*声明动画关键帧,25s转一次，线性，一直旋转*/
+            box-shadow: 2px 0px 4px 2px rgba(0, 0, 0, 0.75);
+        }
+
+        @media (max-width: 500px) {
+
+            /*媒体查询*/
+            #bagua {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        #bagua>div:first-child {
+            /* 高400px，宽200px黑色部分，清除浮动后在#bagua显示为黑色半圆 */
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            background-color: black;
+        }
+
+        #bagua>div:nth-child(2) {
+            /* 高400px，宽200px白色部分，清除浮动后在#bagua显示为白色半圆 */
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            background-color: white;
+        }
+
+        #bagua>div:nth-child(3) {
+            /* r=100的黑色圆 */
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+            background-color: black;
+        }
+
+        @media (max-width: 500px) {
+            #bagua>div:nth-child(3) {
+                width: 100px;
+                height: 100px;
+                margin-left: -50px;
+            }
+        }
+
+        #bagua>div:nth-child(4) {
+            /* r=100的白色圆 */
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+            top: 50%;
+            background-color: white;
+        }
+
+        @media (max-width: 500px) {
+            #bagua>div:nth-child(4) {
+                width: 100px;
+                height: 100px;
+                margin-left: -50px;
+            }
+        }
+
+        #bagua>div:nth-child(5) {
+            /* r=25的白色圆 */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -25px;
+            top: 75px;
+            background-color: white;
+        }
+
+        @media (max-width: 500px) {
+            #bagua>div:nth-child(5) {
+                width: 25px;
+                height: 25px;
+                margin-left: -12.5px;
+                top: 37.5px;
+            }
+        }
+
+        #bagua>div:nth-child(6) {
+            /* r=25的黑色圆 */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -25px;
+            bottom: 75px;
+            background-color: black;
+        }
+
+        @media (max-width: 500px) {
+            #bagua>div:nth-child(6) {
+                width: 25px;
+                height: 25px;
+                margin-left: -12.5px;
+                bottom: 37.5px;
+            }
+        }
+
+        #bagua-wrapper {
+            height: 100vh;
+            /* viewpoint height，使用户可视范围占据整个窗口 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* flex默认将内部元素横排，通过flex-direction修改布局为竖排 */
+        }
+
+        #bagua-description {
+            font-size: 30;
+            margin-top: 1.6em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bagua-wrapper">
+        <div id="bagua">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="bagua-description"><b>道可道，非常道</b></div>
+
+    </div>
+</body>
+
+</html>
